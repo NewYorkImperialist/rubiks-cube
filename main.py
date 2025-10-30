@@ -18,6 +18,23 @@ cube = [
     [Y, Y, Y, Y, Y, Y, Y, Y, Y]   # Bottom face
 ]
 
+def clockwise(face): # not an actual move, just a helper move to clean code
+    temp = face.copy()
+    face[0] = temp[6]
+    face[1] = temp[3]
+    face[2] = temp[0]
+    face[3] = temp[7]
+    # face[4] stays the same (center)
+    face[5] = temp[1]
+    face[6] = temp[8]
+    face[7] = temp[5]
+    face[8] = temp[2]
+
+def counterclockwise(face): # not an actual move, just a helper move to clean code
+    clockwise(face)
+    clockwise(face)
+    clockwise(face)
+
 def push_right(): 
     temp = [
         cube[0][2], 
@@ -41,25 +58,7 @@ def push_right():
     cube[4][8] = temp[2]
 
 # Rotate Right Face
-    temp = [
-        cube[1][0], 
-        cube[1][1], 
-        cube[1][2],
-        cube[1][3], 
-        cube[1][4], 
-        cube[1][5],
-        cube[1][6], 
-        cube[1][7], 
-        cube[1][8]
-        ]
-    cube[1][0] = temp[6]
-    cube[1][1] = temp[3]
-    cube[1][2] = temp[0]
-    cube[1][3] = temp[7]
-    cube[1][5] = temp[1]
-    cube[1][6] = temp[8]
-    cube[1][7] = temp[5]
-    cube[1][8] = temp[2]
+    clockwise(cube[1])
 
 def pull_right():
     push_right()
@@ -70,7 +69,11 @@ def rotate_x():
     pass
 
 def rotate_y():
-    pass
+    temp = cube[0]
+    cube[0] = cube[1]
+    cube[1] = cube[2]
+    cube[2] = cube[3] 
+    cube[3] = temp
 
 def rotate_z():
     pass
@@ -79,10 +82,9 @@ def rotate_z():
 
 
 # ========== TESTING ========== # 
-push_right()
-push_right()
-push_right()
-push_right()
-
+rotate_y()
+rotate_y()
+rotate_y()
+rotate_y()
 
 print(cube)

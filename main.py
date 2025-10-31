@@ -66,7 +66,14 @@ def pull_right():
     push_right()
 
 def rotate_x():
-    pass
+    clockwise(cube[0])
+    clockwise(cube[1])
+    counterclockwise(cube[2]) # back face is reflected upside down
+    clockwise(cube[3])
+    clockwise(cube[4])
+    clockwise(cube[5])
+    # Top --> Right --> Bottom --> Left --> Top 
+    
 
 def rotate_y():
     temp = cube[0]
@@ -74,6 +81,8 @@ def rotate_y():
     cube[1] = cube[2]
     cube[2] = cube[3] 
     cube[3] = temp
+    clockwise(cube[4])
+    counterclockwise(cube[5])
 
 def rotate_z():
     pass
@@ -83,8 +92,6 @@ def rotate_z():
 
 # ========== TESTING ========== # 
 rotate_y()
-rotate_y()
-rotate_y()
-rotate_y()
+
 
 print(cube)

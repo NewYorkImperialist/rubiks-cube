@@ -45,6 +45,10 @@ def rotate_x(): # x rotation
     clockwise(cube[1])
     counterclockwise(cube[3])
     
+def rotate_x_prime(): # x' rotation
+    rotate_x()
+    rotate_x()
+    rotate_x()
 
 def rotate_y(): # y rotation
     # Front --> Right --> Back --> Left 0 1 2 3
@@ -55,6 +59,11 @@ def rotate_y(): # y rotation
     cube[3] = temp
     clockwise(cube[4])
     counterclockwise(cube[5])
+
+def rotate_y_prime(): # y' rotation
+    rotate_y()
+    rotate_y()
+    rotate_y()
 
 def rotate_z(): # z rotation
     clockwise(cube[0])
@@ -69,6 +78,11 @@ def rotate_z(): # z rotation
     cube[3] = cube[5]
     cube[5] = cube[1]
     cube[1] = temp
+
+def rotate_z_prime(): # z' rotation
+    rotate_z()
+    rotate_z()
+    rotate_z()
     
 def push_right(): # R -- Note: Every other push/pull move is defined based off this function + rotations
     temp = [
@@ -101,34 +115,58 @@ def pull_right(): # R'
     push_right()
 
 def push_left(): # L
-    pass
+    rotate_z()
+    rotate_z()
+    push_right()
+    rotate_z()
+    rotate_z()
 
 def pull_left(): # L'
-    pass
+    push_left()
+    push_left()
+    push_left()
 
 def push_up(): # U
-    pass
+    rotate_z()
+    push_right()
+    rotate_z_prime
 
 def pull_up(): # U'
-    pass
+    push_up()
+    push_up()
+    push_up()
 
 def push_front(): # F
-    pass
+    rotate_y()
+    push_left()
+    rotate_y_prime()
 
 def pull_front(): # F'
-    pass
+    push_front()
+    push_front()
+    push_front()
 
 def push_down(): # D
-    pass
+    rotate_x()
+    rotate_x()
+    push_up()
+    rotate_x()
+    rotate_x()
 
 def pull_down(): # D'
-    pass
+    push_down()
+    push_down()
+    push_down()
 
 def push_back(): # B
-    pass
+    rotate_y()
+    push_right()
+    rotate_y_prime()
 
-def pull_down(): # B'
-    pass
+def pull_back(): # B'
+    push_back()
+    push_back()
+    push_back()
 
 
 # ========== UI ========== # 

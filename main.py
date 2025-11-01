@@ -41,12 +41,13 @@ def rotate_x(): # x rotation
     cube[4] = cube[0]
     cube[0] = cube[5]
     cube[5] = cube[2]
-    cube[2] = cube[4]
-    clockwise(1)
-    counterclockwise(3)
+    cube[2] = temp
+    clockwise(cube[1])
+    counterclockwise(cube[3])
     
 
 def rotate_y(): # y rotation
+    # Front --> Right --> Back --> Left 0 1 2 3
     temp = clockwise(cube[0])
     cube[0] = cube[1]
     cube[1] = cube[2]
@@ -69,7 +70,7 @@ def rotate_z(): # z rotation
     cube[5] = cube[1]
     cube[1] = temp
     
-def push_right(): # R
+def push_right(): # R -- Note: Every other push/pull move is defined based off this function + rotations
     temp = [
         cube[0][2], 
         cube[0][5], 
@@ -134,7 +135,10 @@ def pull_down(): # B'
 
 
 # ========== TESTING ========== # 
-rotate_y()
+rotate_x()
+rotate_x()
+rotate_x()
+rotate_x()
 
 
 print(cube)

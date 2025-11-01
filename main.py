@@ -35,7 +35,41 @@ def counterclockwise(face): # not an actual move, just a helper move to clean co
     clockwise(face)
     clockwise(face)
 
-def push_right(): 
+def rotate_x(): # x rotation
+    # Top --> Front --> Bottom --> Back --> Top 4 0 5 2
+    temp = cube[4]
+    cube[4] = cube[0]
+    cube[0] = cube[5]
+    cube[5] = cube[2]
+    cube[2] = cube[4]
+    clockwise(1)
+    counterclockwise(3)
+    
+
+def rotate_y(): # y rotation
+    temp = clockwise(cube[0])
+    cube[0] = cube[1]
+    cube[1] = cube[2]
+    cube[2] = cube[3] 
+    cube[3] = temp
+    clockwise(cube[4])
+    counterclockwise(cube[5])
+
+def rotate_z(): # z rotation
+    clockwise(cube[0])
+    clockwise(cube[1])
+    counterclockwise(cube[2]) # back face is reflected upside down
+    clockwise(cube[3])
+    clockwise(cube[4])
+    clockwise(cube[5])
+    # Top --> Right --> Bottom --> Left --> Top 4 1 5 3
+    temp = cube[4]
+    cube[4] = cube[3]
+    cube[3] = cube[5]
+    cube[5] = cube[1]
+    cube[1] = temp
+    
+def push_right(): # R
     temp = [
         cube[0][2], 
         cube[0][5], 
@@ -57,35 +91,44 @@ def push_right():
     cube[4][5] = temp[1]
     cube[4][8] = temp[2]
 
-# Rotate Right Face
+    # Rotate Right Face
     clockwise(cube[1])
 
-def pull_right():
+def pull_right(): # R'
     push_right()
     push_right()
     push_right()
 
-def rotate_x():
-    clockwise(cube[0])
-    clockwise(cube[1])
-    counterclockwise(cube[2]) # back face is reflected upside down
-    clockwise(cube[3])
-    clockwise(cube[4])
-    clockwise(cube[5])
-    # Top --> Right --> Bottom --> Left --> Top 
-    
-
-def rotate_y():
-    temp = cube[0]
-    cube[0] = cube[1]
-    cube[1] = cube[2]
-    cube[2] = cube[3] 
-    cube[3] = temp
-    clockwise(cube[4])
-    counterclockwise(cube[5])
-
-def rotate_z():
+def push_left(): # L
     pass
+
+def pull_left(): # L'
+    pass
+
+def push_up(): # U
+    pass
+
+def pull_up(): # U'
+    pass
+
+def push_front(): # F
+    pass
+
+def pull_front(): # F'
+    pass
+
+def push_down(): # D
+    pass
+
+def pull_down(): # D'
+    pass
+
+def push_back(): # B
+    pass
+
+def pull_down(): # B'
+    pass
+
 
 # ========== UI ========== # 
 

@@ -1,5 +1,3 @@
-import pygame as pg
-
 # ========== LOGIC ========== # 
 
 G = 0
@@ -168,8 +166,15 @@ def pull_back(): # B'
     push_back()
     push_back()
 
+def m_slice(): # M
+    pass
 
-# ========== UI ========== # 
+def m_slice_prime(): # M' this is the one that goes the same direction with R... it's weird lol
+    pass
+
+# probably will define the S and E layers... but who uses those anyways?
+
+
 
 
 # ========== TESTING ========== # 
@@ -179,4 +184,3 @@ rotate_x()
 rotate_x()
 
 
-print(cube)
